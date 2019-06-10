@@ -1,0 +1,56 @@
+<Editor>:
+    BoxLayout:
+        orientation: 'horizontal'
+        BoxLayout:
+            orientation: 'vertical'
+            Label
+                text: "CONNECTION"
+            BoxLayout:
+                size_hint_y: 0.1
+                Label:
+                    text: 'ip'
+                TextInput:
+                    id: zmq_ip
+                    text: "127.0.0.1"
+            BoxLayout:
+                size_hint_y: 0.1
+                Label:
+                    text: 'port'
+                TextInput:
+                    id: zmq_port
+                    text: '3000'
+            Button:
+                size_hint_y: 0.15
+                text: 'connect'
+                on_press: root.connect(ip, port)
+                    
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: "CAM / VID"
+            BoxLayout:
+                size_hint_y: 0.1
+                Label:
+                    text: 'src'
+                TextInput:
+                    id: cam_src
+                    text: '0'
+            BoxLayout:
+                size_hint_y: 0.1
+                Label:
+                    text: 'show'
+                CheckBox:
+                    id: cam_show
+                    active: True
+                    on_state: root.toggle_cam_show(cam_show)
+            Button:
+                size_hint_y: 0.15
+                text : 'load'
+                on_press: root.cam_load(cam_src)
+        
+<ShowData>:     
+    BoxLayout:
+        pos_hint : {'x': 0.5, 'y': 0}
+        TextInput:
+            id: face_json
+
